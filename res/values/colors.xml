@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- 顶部导航 -->
+    <color name="top_menu_bg">#FF36BCB1</color>
+    <color name="top_title">#ffffffff</color>
+</resources>

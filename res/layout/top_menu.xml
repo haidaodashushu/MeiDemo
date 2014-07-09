@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_height"
+    android:background="@drawable/bg_actionbar"
+    android:layout_gravity="top"
+    android:orientation="horizontal" >
+	<!-- 美团图标 -->
+    <LinearLayout
+        android:id="@+id/mei"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/left_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/mpay__ic_actionbar_home_as_up_indicator"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/mpay__ic_actionbar_home" />
+    </LinearLayout>
+
+    <!-- 标题+城市 -->
+    <FrameLayout
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp" >
+
+        <TextView
+            android:id="@+id/top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@string/top_title"
+            android:textColor="@color/top_title"
+            android:textSize="@dimen/top_title"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/top_city"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/top_city_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/top_city"
+                android:textColor="@color/top_title"
+                android:textSize="@dimen/top_city_text"
+                 />
+            <ImageView 
+                android:id="@+id/top_city_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_arrow_white_down"/>
+        </LinearLayout>
+    </FrameLayout>
+	
+    
+    <!-- 右侧的各种图标 -->
+    <LinearLayout 
+        android:id="@+id/right_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right|center_vertical"
+        android:layout_gravity="right|center_vertical"
+        android:orientation="horizontal">
+        <ImageButton 
+            android:id="@+id/icon1"
+            android:layout_width="@dimen/top_height"
+            android:layout_height="@dimen/top_height"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_action_map"
+            android:background="@drawable/btn_topbar_selector"/>
+        <ImageButton 
+            android:id="@+id/icon2"
+            android:layout_width="@dimen/top_height"
+            android:layout_height="@dimen/top_height"
+            android:contentDescription="@null"
+            android:scaleType="center"
+            android:src="@drawable/ic_action_search"
+            android:background="@drawable/btn_topbar_selector"/>
+        
+    </LinearLayout>
+</LinearLayout>

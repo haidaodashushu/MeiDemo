@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MeiDemo</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- 顶部导航 -->
+    <string name="top_title">美食</string>
+    <string name="top_city">广州</string>
+    <!-- 底部导航 -->
+    <string name="group">团购</string>
+    <string name="business">商家</string>
+    <string name="myinfo">我的</string>
+    <string name="localService">本地服务</string>
+    <string name="more">更多</string>
+
+</resources>
