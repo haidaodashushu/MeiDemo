@@ -4,4 +4,10 @@
     <!-- 顶部导航 -->
     <color name="top_menu_bg">#FF36BCB1</color>
     <color name="top_title">#ffffffff</color>
+    
+    
+    <color name="hr_title_unselect">#ff545454</color>
+    <color name="hr_title_select">#ffACB1BC</color>
+    <color name="hr_price">#FFFF8B2E</color>
+    <color name="hr_publish">#ffACB1BC</color>
 </resources>

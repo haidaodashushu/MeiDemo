@@ -13,12 +13,16 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.example.meidemo.BaseFragment;
 import com.example.meidemo.R;
+import com.example.meidemo.Constants.ConstansUrls;
 import com.example.meidemo.net.HttpConnection;
+import com.example.meidemo.net.HttpConnection.HttpConnectionListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +38,8 @@ public class LocalServiceFragment extends BaseFragment {
 	LocalServiceListAdapter adapter;
 	ObjectMapper objectMapper;
 	private static final String TGA = "LocalServiceFragment";
+	Handler handler;
+
 	@Override
 	public void onAttach(Activity activity) {
 		// TODO Auto-generated method stub
@@ -62,54 +68,77 @@ public class LocalServiceFragment extends BaseFragment {
 
 		listView.setAdapter(adapter);
 		LocalServiceTask task = new LocalServiceTask();
-		
-		task.execute();
+		task.start();
+		handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				Bundle bundle = (Bundle) msg.obj;
+				String result = bundle.getString("message");
+				try {
+					LocalServiceEntitys localServiceEntitys = objectMapper
+							.readValue(result, LocalServiceEntitys.class);
+					
+				} catch (JsonParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JsonMappingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		};
 	}
 
-	class LocalServiceTask extends AsyncTask<String, Void, String> {
+	class LocalServiceTask extends Thread {
 
 		@Override
-		protected String doInBackground(String... params) {
+		public void run() {
 			Log.i(TGA, "开始执行");
 			List<NameValuePair> data = new LinkedList<NameValuePair>();
-			data.add(new BasicNameValuePair("cb", "jsonp"));
+			// data.add(new BasicNameValuePair("cb", "jsonp"));
+			data.add(new BasicNameValuePair("ty", "0"));
+			data.add(new BasicNameValuePair("pb", "0"));
+			data.add(new BasicNameValuePair("pg", "1"));
+			data.add(new BasicNameValuePair("ps", "20"));
 			HttpConnection connection = new HttpConnection();
 			String string = null;
 			try {
-				 string= connection
-						.handleConnection(
-								"http://192.168.219.131/project/gb/gb_interface/index.php/house/Index/index",
-								mActivity, data);
+				string = connection.handleConnection(ConstansUrls.House_Rent,
+						mActivity, data, new HttpConnectionListener() {
+
+							@Override
+							public String onSuccess(String message) {
+								Log.i("onSuccess", message);
+								Message msg = new Message();
+								msg.what = 1;
+								Bundle bundle = new Bundle();
+								bundle.putString("message", message);
+								msg.obj = bundle;
+								handler.sendMessage(msg);
+								return message;
+							}
+
+							@Override
+							public String onFailure(String message) {
+								Log.i("onFailure", message);
+								Message msg = new Message();
+								msg.what = 1;
+								Bundle bundle = new Bundle();
+								bundle.putString("message", message);
+								msg.obj = bundle;
+								handler.sendMessage(msg);
+								return message;
+							}
+						});
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return string;
 		}
-		@Override
-		protected void onPostExecute(String result) {
-			try {
-				objectMapper.getJsonFactory().createJsonGenerator(System.out, JsonEncoding.UTF8);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				
-				LocalServiceEntity localServiceEntity = objectMapper.readValue(result, LocalServiceEntity.class);
-			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			super.onPostExecute(result);
-		}
-
 	}
 
 }

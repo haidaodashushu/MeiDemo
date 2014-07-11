@@ -14,5 +14,9 @@
     <string name="myinfo">我的</string>
     <string name="localService">本地服务</string>
     <string name="more">更多</string>
-
+	
+    <string name="hr_title">大石 大石大信信和 2室1厅 80m²</string>
+    <string name="hr_content">本人专注天文苑,三房靓装修,体育西地铁口物业,约看 </string>
+    <string name="hr_price">1200元 </string>
+    <string name="hr_publish">今天</string>
 </resources>

@@ -23,10 +23,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
 
 import com.example.meidemo.CommonUtils.StringUtils;
 
 import android.content.Context;
+import android.util.Log;
 
 public class HttpConnection {
 	private final static String USER_AGENT_VALUE = "Mozilla/5.0 (Linux; U; Android 2.2; zh-cn; Desire_A8181 Build/FRF91) "
@@ -38,14 +40,26 @@ public class HttpConnection {
 	HttpPost httppost;
 	HttpGet httpget;
 	
+	private final static String ClientProtocolException = "1";
+	private final static String SocketTimeoutException = "2";
+	private final static String Exception = "3";
+	private final static String URL_NULL = "4";
+	private final static String RESPONSE_NULL = "5";
+	
 	public DataInputStream dis;
+	
+	public interface HttpConnectionListener{
+		public String onSuccess(String message);
+		public String onFailure(String message);
+	}
 	public String handleConnection(String url, Context context,
-			List<NameValuePair> data) throws Exception {
+			List<NameValuePair> data,HttpConnectionListener listener) throws Exception {
 
 		long time = System.currentTimeMillis();
 		// Log.v("Mytime", "1 ----"+System.currentTimeMillis());
 		if (url == null) {
-			return "";
+			listener.onFailure(HttpConnection.URL_NULL);
+			return HttpConnection.URL_NULL;
 		}
 		HttpResponse response = null;
 		try {
@@ -79,14 +93,17 @@ public class HttpConnection {
 		} catch (ClientProtocolException e) {
 
 			httpclient.getConnectionManager().shutdown();
+			listener.onFailure(HttpConnection.ClientProtocolException);
 			throw e;
 		} catch (SocketTimeoutException e) {
 
 			httpclient.getConnectionManager().shutdown();
+			listener.onFailure(HttpConnection.SocketTimeoutException);
 			throw e;
 		} catch (Exception e) {
 
 			httpclient.getConnectionManager().shutdown();
+			listener.onFailure(HttpConnection.Exception);
 			throw e;
 		}
 
@@ -104,24 +121,40 @@ public class HttpConnection {
 			httpclient.getConnectionManager().shutdown();
 		} else {
 			HttpEntity entity = response.getEntity();
-
+			
 			// TODO：10.17做处理 ，如果返回的数据的entry是空的，就不执行业务了，不然会挂
 			if (null != entity) {// 保护
+				
 				if (null != entity.getContentType()) {
+					StringBuffer sb = new StringBuffer();
+					String temp = EntityUtils.toString(response.getEntity());
+//					Log.i("HTTP", temp);
+					temp = StringUtils.decodeUnicode(temp);
+//					Log.i("HTTP1", temp);
+					sb.append(temp);
+					temp=sb.toString();
+					sb = null;
+					listener.onSuccess(temp); 
+					
+					return temp;
+					
 				}
 			} else {// 保护
+				listener.onFailure(HttpConnection.RESPONSE_NULL);
 				return "";
 			}
 
-			try {
+			/*try {
 				dis = new DataInputStream(entity.getContent());
 				
 				StringBuffer sb = new StringBuffer();
 				byte [] b2=new byte[1024];
 				  int len;
 				while ((len=dis.read(b2))!=-1) {
-					String string = new String(b2, 0, len,"UTF-8");
 //					string = StringUtils.decodeUnicode(string);
+					Log.i("HttpConnection", string);
+					string = StringUtils.fromUnicode(string.toCharArray(), 0,
+							 string.length(), new char[string.length()]);
 					sb.append(string);
 				}
 				return sb.toString();
@@ -136,9 +169,9 @@ public class HttpConnection {
 				// "---" + request.getUrl());
 				throw e;
 			} finally {
-			}
+			}*/
 		}
-		return "";
+		return ""; 
 
 	}
 }

@@ -4,4 +4,9 @@
     <dimen name="top_height">50dp</dimen>
     <dimen name="top_title">18sp</dimen>
     <dimen name="top_city_text">15sp</dimen>
+    
+    <dimen name="hr_title">16sp </dimen>
+    <dimen name="hr_content">14sp </dimen>
+    <dimen name="hr_price">14sp </dimen>
+    <dimen name="hr_publish">14sp </dimen>
 </resources>
