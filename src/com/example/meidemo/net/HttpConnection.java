@@ -31,6 +31,7 @@ import android.content.Context;
 import android.util.Log;
 
 public class HttpConnection {
+	public static final String TGA = "HttpConnection";
 	private final static String USER_AGENT_VALUE = "Mozilla/5.0 (Linux; U; Android 2.2; zh-cn; Desire_A8181 Build/FRF91) "
 			+ "AppleWebKit/533.1 (KHTML, likeGecko) "
 			+ "Version/4.0 Mobile Safari/533.1 ";
@@ -47,10 +48,33 @@ public class HttpConnection {
 	private final static String RESPONSE_NULL = "5";
 	
 	public DataInputStream dis;
+	private static HttpConnection connection;
 	
 	public interface HttpConnectionListener{
 		public String onSuccess(String message);
 		public String onFailure(String message);
+	}
+	private HttpConnection() {
+		// TODO Auto-generated constructor stub
+	}
+	public static synchronized HttpConnection getInstance(){
+		if (connection==null) {
+			connection = new HttpConnection();
+		}
+		return connection;
+	}
+	public void start(final String url, final Context context,
+			final List<NameValuePair> data,final HttpConnectionListener listener){
+		new Thread(){
+			public void run() {
+				try {
+					handleConnection(url, context, data, listener);
+				} catch (java.lang.Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			};
+		}.start();
 	}
 	public String handleConnection(String url, Context context,
 			List<NameValuePair> data,HttpConnectionListener listener) throws Exception {
@@ -82,7 +106,9 @@ public class HttpConnection {
 			if (null != data) {
 				httppost = new HttpPost(url);
 				httppost.setEntity(new UrlEncodedFormEntity(data));
+				Log.i(TGA, httppost.getURI().toASCIIString());
 				response = httpclient.execute(httppost);
+				
 			} else {
 				// 目标地址
 				httpget = new HttpGet(url);
@@ -130,7 +156,7 @@ public class HttpConnection {
 					String temp = EntityUtils.toString(response.getEntity());
 //					Log.i("HTTP", temp);
 					temp = StringUtils.decodeUnicode(temp);
-//					Log.i("HTTP1", temp);
+					Log.i("HTTP1", temp);
 					sb.append(temp);
 					temp=sb.toString();
 					sb = null;

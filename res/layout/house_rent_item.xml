@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="@string/hr_title"
-                android:textColor="@drawable/hr_title_selected"
+                android:textColor="@color/hr_title_unselect"
                 android:textSize="@dimen/hr_title" />
 
             <TextView

@@ -9,10 +9,11 @@ package com.example.meidemo;
 
 public final class R {
     public static final class anim {
-        public static final int slide_in_from_bottom=0x7f040000;
-        public static final int slide_in_from_top=0x7f040001;
-        public static final int slide_out_to_bottom=0x7f040002;
-        public static final int slide_out_to_top=0x7f040003;
+        public static final int in_toptobottom=0x7f040000;
+        public static final int slide_in_from_bottom=0x7f040001;
+        public static final int slide_in_from_top=0x7f040002;
+        public static final int slide_out_to_bottom=0x7f040003;
+        public static final int slide_out_to_top=0x7f040004;
     }
     public static final class attr {
         /**  BELOW HERE ARE DEPRECEATED. DO NOT USE. 
@@ -151,9 +152,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ptrSubHeaderTextAppearance=0x7f01000b;
     }
     public static final class color {
+        public static final int h_line=0x7f080006;
+        public static final int h_pop_bg=0x7f080009;
+        public static final int h_popwindow_agent_left_item=0x7f08000a;
+        public static final int h_popwindow_agent_left_text_select=0x7f08000c;
+        public static final int h_popwindow_agent_left_text_unselect=0x7f08000b;
+        public static final int h_popwindow_agent_right_text_unselect=0x7f08000d;
+        public static final int h_text_select=0x7f080007;
+        public static final int h_text_unselect=0x7f080008;
         public static final int hr_price=0x7f080004;
         public static final int hr_publish=0x7f080005;
         public static final int hr_title_select=0x7f080003;
+        public static final int hr_title_selector=0x7f08000e;
         public static final int hr_title_unselect=0x7f080002;
         /**  顶部导航 
          */
@@ -161,6 +171,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int top_title=0x7f080001;
     }
     public static final class dimen {
+        public static final int h_title=0x7f06000c;
         public static final int header_footer_left_right_padding=0x7f060003;
         public static final int header_footer_top_bottom_padding=0x7f060004;
         public static final int hr_content=0x7f060009;
@@ -185,8 +196,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int business_menu=0x7f020005;
         public static final int default_ptr_flip=0x7f020006;
         public static final int default_ptr_rotate=0x7f020007;
-        public static final int group_menu=0x7f020008;
-        public static final int hr_title_selected=0x7f020009;
+        public static final int ep_tab_divider_small=0x7f020008;
+        public static final int group_menu=0x7f020009;
         public static final int ic_action_favorite_off=0x7f02000a;
         public static final int ic_action_favorite_on=0x7f02000b;
         public static final int ic_action_location=0x7f02000c;
@@ -196,79 +207,112 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_action_share=0x7f020010;
         public static final int ic_arrow_white_down=0x7f020011;
         public static final int ic_arrow_white_up=0x7f020012;
-        public static final int ic_launcher=0x7f020013;
-        public static final int ic_menu_deal_off=0x7f020014;
-        public static final int ic_menu_deal_on=0x7f020015;
-        public static final int ic_menu_more_off=0x7f020016;
-        public static final int ic_menu_more_on=0x7f020017;
-        public static final int ic_menu_poi_off=0x7f020018;
-        public static final int ic_menu_poi_on=0x7f020019;
-        public static final int ic_menu_user_off=0x7f02001a;
-        public static final int ic_menu_user_on=0x7f02001b;
-        public static final int ic_order_takeout_disable=0x7f02001c;
-        public static final int ic_order_takeout_enable=0x7f02001d;
-        public static final int ic_stat_notify=0x7f02001e;
-        public static final int indicator_arrow=0x7f02001f;
-        public static final int indicator_bg_bottom=0x7f020020;
-        public static final int indicator_bg_top=0x7f020021;
-        public static final int line_gradient=0x7f020022;
-        public static final int localservice_menu=0x7f020023;
-        public static final int map_selector=0x7f020024;
-        public static final int mei=0x7f020025;
-        public static final int menu_line=0x7f020026;
-        public static final int more_menu=0x7f020027;
-        public static final int mpay__ic_actionbar_home=0x7f020028;
-        public static final int mpay__ic_actionbar_home_as_up_indicator=0x7f020029;
-        public static final int myinfo_menu=0x7f02002a;
+        public static final int ic_global_arrow_green_fold_normal=0x7f020013;
+        public static final int ic_global_arrow_green_unfold_normal=0x7f020014;
+        public static final int ic_launcher=0x7f020015;
+        public static final int ic_menu_deal_off=0x7f020016;
+        public static final int ic_menu_deal_on=0x7f020017;
+        public static final int ic_menu_more_off=0x7f020018;
+        public static final int ic_menu_more_on=0x7f020019;
+        public static final int ic_menu_poi_off=0x7f02001a;
+        public static final int ic_menu_poi_on=0x7f02001b;
+        public static final int ic_menu_user_off=0x7f02001c;
+        public static final int ic_menu_user_on=0x7f02001d;
+        public static final int ic_order_takeout_disable=0x7f02001e;
+        public static final int ic_order_takeout_enable=0x7f02001f;
+        public static final int ic_stat_notify=0x7f020020;
+        public static final int indicator_arrow=0x7f020021;
+        public static final int indicator_bg_bottom=0x7f020022;
+        public static final int indicator_bg_top=0x7f020023;
+        public static final int j_1=0x7f020024;
+        public static final int j_2=0x7f020025;
+        public static final int j_3=0x7f020026;
+        public static final int j_4=0x7f020027;
+        public static final int j_5=0x7f020028;
+        public static final int j_6=0x7f020029;
+        public static final int j_7=0x7f02002a;
+        public static final int j_8=0x7f02002b;
+        public static final int line=0x7f02002c;
+        public static final int line_bottom=0x7f02002d;
+        public static final int line_bottom_red=0x7f02002e;
+        public static final int line_gradient=0x7f02002f;
+        public static final int line_top=0x7f020030;
+        public static final int localservice_menu=0x7f020031;
+        public static final int map_selector=0x7f020032;
+        public static final int mei=0x7f020033;
+        public static final int menu_line=0x7f020034;
+        public static final int more_menu=0x7f020035;
+        public static final int mpay__ic_actionbar_home=0x7f020036;
+        public static final int mpay__ic_actionbar_home_as_up_indicator=0x7f020037;
+        public static final int myinfo_menu=0x7f020038;
+        public static final int progressanim=0x7f020039;
+        public static final int progresssplash=0x7f02003a;
+        public static final int start_dh01=0x7f02003b;
+        public static final int start_dh02=0x7f02003c;
+        public static final int yt_line=0x7f02003d;
     }
     public static final class id {
+        public static final int agent=0x7f050026;
+        public static final int agent_bottom=0x7f050027;
         public static final int both=0x7f050003;
         public static final int business=0x7f050010;
         public static final int businessText=0x7f050011;
         public static final int disabled=0x7f050000;
-        public static final int fl_inner=0x7f050021;
+        public static final int fl_inner=0x7f05002f;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
         public static final int group=0x7f05000e;
         public static final int groupText=0x7f05000f;
-        public static final int hr_content=0x7f05001d;
-        public static final int hr_image=0x7f05001b;
-        public static final int hr_price=0x7f05001e;
-        public static final int hr_publish=0x7f05001f;
-        public static final int hr_title=0x7f05001c;
-        public static final int icon=0x7f050028;
-        public static final int icon1=0x7f05002f;
-        public static final int icon2=0x7f050030;
-        public static final int left_arrow=0x7f050027;
+        public static final int h_pop_linearlayout=0x7f050022;
+        public static final int h_pop_list=0x7f050023;
+        public static final int h_pop_list1=0x7f050024;
+        public static final int h_popwindow_agent_left_image=0x7f05001c;
+        public static final int h_popwindow_agent_left_text=0x7f05001b;
+        public static final int hallroom=0x7f05002a;
+        public static final int hallroom_bottom=0x7f05002b;
+        public static final int hr_content=0x7f05001f;
+        public static final int hr_image=0x7f05001d;
+        public static final int hr_price=0x7f050020;
+        public static final int hr_publish=0x7f050021;
+        public static final int hr_title=0x7f05001e;
+        public static final int icon=0x7f050036;
+        public static final int icon1=0x7f05003d;
+        public static final int icon2=0x7f05003e;
+        public static final int left_arrow=0x7f050035;
         public static final int line=0x7f050018;
         public static final int localService=0x7f050014;
         public static final int localServiceText=0x7f050015;
-        public static final int local_service_pull_refresh_list=0x7f050020;
+        public static final int local_service_pull_refresh_list=0x7f05002d;
         public static final int main_pager=0x7f050019;
         public static final int manualOnly=0x7f050004;
-        public static final int mei=0x7f050026;
+        public static final int mei=0x7f050034;
         public static final int more=0x7f050016;
         public static final int moreText=0x7f050017;
         public static final int myInfo=0x7f050012;
         public static final int myInfoText=0x7f050013;
+        public static final int origin=0x7f05002c;
+        public static final int progressbar=0x7f05002e;
         public static final int pullDownFromTop=0x7f050005;
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
         public static final int pull_refresh_list=0x7f05001a;
-        public static final int pull_to_refresh_image=0x7f050022;
-        public static final int pull_to_refresh_progress=0x7f050023;
-        public static final int pull_to_refresh_sub_text=0x7f050025;
-        public static final int pull_to_refresh_text=0x7f050024;
-        public static final int right_menu=0x7f05002e;
+        public static final int pull_to_refresh_image=0x7f050030;
+        public static final int pull_to_refresh_progress=0x7f050031;
+        public static final int pull_to_refresh_sub_text=0x7f050033;
+        public static final int pull_to_refresh_text=0x7f050032;
+        public static final int rent=0x7f050028;
+        public static final int rent_bottom=0x7f050029;
+        public static final int right_menu=0x7f05003c;
         public static final int rotate=0x7f050007;
         public static final int scrollview=0x7f05000b;
         public static final int tabMenu=0x7f05000d;
-        public static final int top_city=0x7f05002b;
-        public static final int top_city_arrow=0x7f05002d;
-        public static final int top_city_text=0x7f05002c;
-        public static final int top_text=0x7f050029;
-        public static final int top_title=0x7f05002a;
+        public static final int tablerow=0x7f050025;
+        public static final int top_city=0x7f050039;
+        public static final int top_city_arrow=0x7f05003b;
+        public static final int top_city_text=0x7f05003a;
+        public static final int top_text=0x7f050037;
+        public static final int top_title=0x7f050038;
         public static final int viewpager=0x7f05000c;
         public static final int webview=0x7f05000a;
     }
@@ -276,14 +320,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_main=0x7f030000;
         public static final int business_fragment=0x7f030001;
         public static final int group_fragment=0x7f030002;
-        public static final int house_rent_item=0x7f030003;
-        public static final int localservice_fragment=0x7f030004;
-        public static final int more_fragment=0x7f030005;
-        public static final int myinfo_fragment=0x7f030006;
-        public static final int need_this_for_maven=0x7f030007;
-        public static final int pull_to_refresh_header_horizontal=0x7f030008;
-        public static final int pull_to_refresh_header_vertical=0x7f030009;
-        public static final int top_menu=0x7f03000a;
+        public static final int h_popwindow_agent_left_item=0x7f030003;
+        public static final int house_rent_item=0x7f030004;
+        public static final int hr_popwindow_agent=0x7f030005;
+        public static final int hr_popwindow_rent=0x7f030006;
+        public static final int localservice_fragment=0x7f030007;
+        public static final int more_fragment=0x7f030008;
+        public static final int myinfo_fragment=0x7f030009;
+        public static final int need_this_for_maven=0x7f03000a;
+        public static final int pull_to_refresh_header_horizontal=0x7f03000b;
+        public static final int pull_to_refresh_header_vertical=0x7f03000c;
+        public static final int top_menu=0x7f03000d;
     }
     public static final class string {
         public static final int app_name=0x7f070006;
@@ -291,6 +338,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /**  底部导航 
          */
         public static final int group=0x7f07000b;
+        public static final int h_agent=0x7f070014;
+        public static final int h_hallroom=0x7f070016;
+        public static final int h_origin=0x7f070017;
+        public static final int h_rent=0x7f070015;
         public static final int hello_world=0x7f070008;
         public static final int hr_content=0x7f070011;
         public static final int hr_price=0x7f070012;
@@ -318,11 +369,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -341,6 +394,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        public static final int popWindowFade=0x7f090003;
+        public static final int progressDialog=0x7f090002;
     }
     public static final class styleable {
         /** Attributes that can be used with a PullToRefresh.

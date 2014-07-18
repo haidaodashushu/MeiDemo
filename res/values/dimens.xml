@@ -9,4 +9,6 @@
     <dimen name="hr_content">14sp </dimen>
     <dimen name="hr_price">14sp </dimen>
     <dimen name="hr_publish">14sp </dimen>
+    
+    <dimen name="h_title">14sp</dimen>
 </resources>

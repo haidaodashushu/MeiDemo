@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/h_popwindow_agent_left_item">    
+	
+	<TextView 
+	    android:id="@+id/h_popwindow_agent_left_text"
+	    android:layout_width="match_parent"
+	    android:layout_height="55dp"
+	    android:gravity="left|center_vertical"
+	    android:paddingLeft="18dp"
+	    android:text="番禺"
+	    android:textSize="20sp"
+	    />
+	<ImageView 
+	    android:id="@+id/h_popwindow_agent_left_image"
+	    android:layout_width="4dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="left"
+	    android:background="@drawable/line_bottom_red"/>
+</FrameLayout>

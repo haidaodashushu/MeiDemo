@@ -48,6 +48,9 @@ class LocalServiceEntity {
 	public String count;
 	public String tempdu;
 	public String distance;
+	/**记录点击事件
+	 */
+	public boolean click;
 
 	@Override
 	public String toString() {

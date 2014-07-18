@@ -19,4 +19,9 @@
     <string name="hr_content">本人专注天文苑,三房靓装修,体育西地铁口物业,约看 </string>
     <string name="hr_price">1200元 </string>
     <string name="hr_publish">今天</string>
+    
+    <string name="h_agent">区域</string>
+    <string name="h_rent">租金</string>
+    <string name="h_hallroom">厅室</string>
+    <string name="h_origin">来源</string>
 </resources>

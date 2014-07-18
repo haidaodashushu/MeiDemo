@@ -6,8 +6,20 @@
     <color name="top_title">#ffffffff</color>
     
     
+    
+    
     <color name="hr_title_unselect">#ff545454</color>
     <color name="hr_title_select">#ffACB1BC</color>
     <color name="hr_price">#FFFF8B2E</color>
     <color name="hr_publish">#ffACB1BC</color>
+    <color name="h_line">#ffACB1BC</color>
+    
+    <color name="h_text_select">#FFFF8B2E</color>
+    <color name="h_text_unselect">#ff545454</color>
+    <color name="h_pop_bg">#3f000000</color>
+   
+    <color name="h_popwindow_agent_left_item">#ffC8C8C8</color>
+    <color name="h_popwindow_agent_left_text_unselect">#ffE0E0E0</color>
+    <color name="h_popwindow_agent_left_text_select">#ffF0F0F0</color>
+    <color name="h_popwindow_agent_right_text_unselect">#ffF8F8F8</color>
 </resources>

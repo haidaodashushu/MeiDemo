@@ -4,6 +4,5 @@
     
     <item android:state_enabled="true" android:drawable="@color/hr_title_unselect"></item>
     <item android:state_enabled="false" android:drawable="@color/hr_title_select"></item>
-    
     <item android:drawable="@color/hr_title_unselect"></item>
 </selector>

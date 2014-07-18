@@ -58,7 +58,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		if (v instanceof RelativeLayout) {
 			int position = (Integer) v.getTag();
 			if (position>=0&&position<title.length) {
-				mainPager.setCurrentItem(position, true);
+				mainPager.setCurrentItem(position, false);
 			}
 			
 		}
