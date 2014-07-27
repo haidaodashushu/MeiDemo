@@ -139,13 +139,11 @@ public class LocalServiceFragment extends BaseFragment implements
 	class WeakHandler extends Handler {
 		LocalServiceFragment fragment;
 		WeakReference<LocalServiceFragment> weakReference;
+
 		public WeakHandler(LocalServiceFragment fragment) {
 			this.fragment = fragment;
-			weakReference = new WeakReference<LocalServiceFragment>(
-						fragment);
+			weakReference = new WeakReference<LocalServiceFragment>(fragment);
 		}
-
-		
 
 		@Override
 		public void handleMessage(Message msg) {
@@ -244,26 +242,13 @@ public class LocalServiceFragment extends BaseFragment implements
 		case R.id.agent:
 			setFrameLayout(0);
 			pop.setContentView(new PopupWindowAgentView(mActivity, pop, this));
-			if (pop.isShowing()) {
-				pop.dismiss();
-			} else {
-				pop.showAsDropDown(v, 0, 0);
-			}
+			pop.showAsDropDown(v, 0, 0);
 
 			break;
 		case R.id.rent:
 			setFrameLayout(1);
-			// v.setFocusable(true);
-			// View view =
-			// LayoutInflater.from(mActivity).inflate(R.layout.hr_popwindow_rent,
-			// null);
-			if (pop.isShowing()) {
-				pop.dismiss();
-			} else {
-				pop.setContentView(new PopupWindowRentView(mActivity, pop));
-				pop.showAsDropDown(v, 0, 0);
-				// pop.showAtLocation(v, Gravity.CENTER, 0, 0);
-			}
+			pop.setContentView(new PopupWindowRentView(mActivity, pop));
+			pop.showAsDropDown(v, 0, 0);
 
 			break;
 		case R.id.hallroom:
@@ -389,9 +374,8 @@ public class LocalServiceFragment extends BaseFragment implements
 	public void updateAgent(List<NameValuePair> data) {
 
 		try {
-			HttpConnection.getInstance().start(
-					ConstansUrls.House_Rent, mActivity, data,
-					new HttpConnectionListener() {
+			HttpConnection.getInstance().start(ConstansUrls.House_Rent,
+					mActivity, data, new HttpConnectionListener() {
 
 						@Override
 						public String onSuccess(String message) {
