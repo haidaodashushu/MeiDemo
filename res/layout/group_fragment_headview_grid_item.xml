@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/group_headview_grid_item_selector"
+    android:gravity="center">
+     
+    <ImageView 
+        android:id="@+id/group_headview_grid_item_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_launcher"
+        android:scaleType="centerInside"/>
+    
+    <TextView 
+        android:id="@+id/group_headview_grid_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="@string/business"
+        android:padding="5dp"
+        android:textSize="@dimen/group_headview_grid_item_text"
+        android:textColor="@color/group_headview_grid_item_text"/>
+
+</LinearLayout>

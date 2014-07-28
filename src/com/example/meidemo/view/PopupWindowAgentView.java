@@ -3,7 +3,6 @@ package com.example.meidemo.view;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.jar.Attributes.Name;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -15,14 +14,15 @@ import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.example.meidemo.R;
 import com.example.meidemo.CommonUtils.ScreenUtil;
-import com.example.meidemo.view.PopupWindowAgentAdapter.Holder;
+import com.example.meidemo.view.adapter.PopupWindowAgentAdapter;
+import com.example.meidemo.view.adapter.PopupWindowAgentAdapter.Holder;
+import com.example.meidemo.view.adapter.PopupWindowAgentRightAdapter;
 
 public class PopupWindowAgentView extends LinearLayout {
 	PopupWindow pop;

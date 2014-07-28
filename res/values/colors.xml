@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
+    <!-- 背景 -->
+    <color name="background">#ffF0F0F0</color>
     <!-- 顶部导航 -->
-    <color name="top_menu_bg">#FF36BCB1</color>
+    <color name="top_menu_bg">#FF50C1E9</color>
     <color name="top_title">#ffffffff</color>
     
-    
-    
+    <color name="group_headview_guesslike">#6B6B6B</color>
+    <color name="group_headview_grid_unsel">#ffffffff</color>
+    <color name="group_headview_grid_sel">#8fffffff</color>
+    <color name="group_headview_grid_item_text">#323232</color>
     
     <color name="hr_title_unselect">#ff545454</color>
     <color name="hr_title_select">#ffACB1BC</color>

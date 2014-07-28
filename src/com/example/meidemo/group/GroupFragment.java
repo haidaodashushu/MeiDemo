@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import com.example.meidemo.BaseFragment;
 import com.example.meidemo.R;
+import com.example.meidemo.view.GroupHeadView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -64,8 +65,8 @@ public class GroupFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.group_fragment, container, false);
-
-		return view;
+		GroupHeadView headView = new GroupHeadView(mActivity);
+		return headView;
 	}
 
 	@Override
@@ -118,7 +119,8 @@ public class GroupFragment extends BaseFragment {
 					}
 
 				});
-
+		GroupHeadView headView = new GroupHeadView(mActivity);
+		listView.addHeaderView(headView);
 		listView.setAdapter(adapter);
 		
 	}

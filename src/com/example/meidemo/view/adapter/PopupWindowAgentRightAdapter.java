@@ -1,4 +1,4 @@
-package com.example.meidemo.view;
+package com.example.meidemo.view.adapter;
 
 import java.util.List;
 
@@ -72,7 +72,7 @@ public class PopupWindowAgentRightAdapter extends BaseAdapter{
 		}
 		return convertView;
 	}
-	static class Holder{
+	public static class Holder{
 		int position;
 		ImageView img;
 		TextView text;

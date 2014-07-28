@@ -1,4 +1,4 @@
-package com.example.meidemo.view;
+package com.example.meidemo.view.adapter;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class PopupWindowAgentAdapter extends BaseAdapter{
 	List<String> leftList ; 
 	Context context;
-	int current = 0;
+	public int current = 0;
 	public PopupWindowAgentAdapter(List<String> list,Context context) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
@@ -71,9 +71,9 @@ public class PopupWindowAgentAdapter extends BaseAdapter{
 		
 		return convertView;
 	}
-	static class Holder{
-		int position;
-		ImageView img;
-		TextView text;
+	public static class Holder{
+		public int position;
+		public ImageView img;
+		public TextView text;
 	}
 }

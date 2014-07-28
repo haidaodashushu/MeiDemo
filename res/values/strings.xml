@@ -24,4 +24,7 @@
     <string name="h_rent">租金</string>
     <string name="h_hallroom">厅室</string>
     <string name="h_origin">来源</string>
+    
+    
+    <string name="group_headview_guesslike">猜你喜欢</string>
 </resources>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/top_height"
-    android:background="@drawable/bg_actionbar"
+    android:background="@color/top_menu_bg"
     android:layout_gravity="top"
     android:orientation="horizontal" >
 	<!-- 美团图标 -->
@@ -13,7 +13,8 @@
         android:layout_gravity="left|center_vertical"
         android:layout_marginLeft="5dp"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:visibility="gone" >
 
         <ImageView
             android:id="@+id/left_arrow"
@@ -85,6 +86,7 @@
         android:gravity="right|center_vertical"
         android:layout_gravity="right|center_vertical"
         android:orientation="horizontal">
+        
         <ImageButton 
             android:id="@+id/icon1"
             android:layout_width="@dimen/top_height"
@@ -92,7 +94,8 @@
             android:contentDescription="@null"
             android:scaleType="center"
             android:src="@drawable/ic_action_map"
-            android:background="@drawable/btn_topbar_selector"/>
+            android:background="@drawable/btn_topbar_selector"
+            />
         <ImageButton 
             android:id="@+id/icon2"
             android:layout_width="@dimen/top_height"

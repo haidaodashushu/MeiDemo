@@ -11,4 +11,6 @@
     <dimen name="hr_publish">14sp </dimen>
     
     <dimen name="h_title">14sp</dimen>
+    <dimen name="group_headview_guesslike">14sp</dimen>
+    <dimen name="group_headview_grid_item_text">14sp</dimen>
 </resources>
