@@ -14,6 +14,7 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -46,6 +47,11 @@ public class GroupHeadView extends LinearLayout {
 //		gridView.setAdapter(adapter);
 		defaultData();
 		createView();
+	}
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	private void defaultData() {
 		list = new ArrayList<GroupHeadViewGrid>();

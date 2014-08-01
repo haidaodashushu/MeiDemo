@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:gravity="center" 
+    android:background="#ffffffff"
+    android:layout_marginBottom="10dp">
+    
+    <ImageView 
+        android:id="@+id/gropu_listview_img"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.35"
+        android:src="@drawable/ic_launcher"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"/>
+    
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.65"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:gravity="left"
+        >
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center_vertical|left">
+            <TextView 
+                android:id="@+id/group_listview_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="@string/group_listview_title"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="14sp"
+               	android:textColor="@color/group_listview_title"/>
+            
+            <TextView 
+                android:id="@+id/group_listview_distance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:singleLine="true"
+                android:text="@string/group_listview_distance"
+                android:textSize="10sp"
+                android:textColor="@color/group_listview_distance"/>
+        </LinearLayout>
+        
+       	<TextView 
+       	    android:id="@+id/group_listview_content"
+       	    android:layout_width="match_parent"
+       	    android:layout_height="wrap_content"
+       	    android:singleLine="true"
+       	    android:ellipsize="end"
+       	    android:padding="5dp"
+       	    android:text="@string/group_listview_content"
+       	    android:textSize="14sp"
+       	    android:textColor="@color/group_listview_content"/>
+        
+       	
+       	<LinearLayout 
+       	    android:layout_width="match_parent"
+       	    android:layout_height="wrap_content"
+       	    android:orientation="horizontal"
+       	    android:gravity="bottom">
+       	    
+       	    <TextView 
+       	        android:id="@+id/group_listview_newMoney"
+       	        android:layout_width="wrap_content"
+       	        android:layout_height="wrap_content"
+       	        android:text="@string/group_listview_newMoney"
+       	        android:textColor="@color/group_listview_newMoney"
+       	        android:textSize="22sp"/>
+       	   <TextView 
+       	       android:layout_width="wrap_content"
+       	       android:layout_height="wrap_content"
+       	       android:text="@string/group_listview_newMoney_yuan"
+       	       android:gravity="bottom"
+       	       android:textSize="13sp"
+       	       android:paddingLeft="3dp"
+       	       android:textColor="@color/group_listview_newMoney_yuan"/>
+       	   
+       	   <TextView 
+       	        android:id="@+id/group_listview_oldMoney"
+       	        android:layout_width="wrap_content"
+       	        android:layout_height="wrap_content"
+       	        android:layout_marginLeft="10dp"
+       	        android:text="@string/group_listview_oldMoney"
+       	        android:textColor="@color/group_listview_oldMoney"
+       	        android:textSize="14sp"/>
+       	   
+       	  <!--  <TextView 
+       	       android:layout_width="wrap_content"
+       	       android:layout_height="wrap_content"
+       	       android:text="@string/group_listview_newMoney_yuan"
+       	       android:gravity="bottom"
+       	       android:textSize="13sp"
+       	       android:paddingLeft="3dp"
+       	       android:textColor="@color/group_listview_newMoney_yuan"/> -->
+       	</LinearLayout>
+    </LinearLayout>
+    
+</LinearLayout>
