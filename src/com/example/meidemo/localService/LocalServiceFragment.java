@@ -11,6 +11,9 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import zrc.widget.ZrcListView;
+import zrc.widget.ZrcListView.OnItemClickListener;
+
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -28,7 +31,6 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.WindowManager.LayoutParams;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -46,14 +48,13 @@ import com.example.meidemo.net.HttpConnection.HttpConnectionListener;
 import com.example.meidemo.view.PopupWindowAgentView;
 import com.example.meidemo.view.PopupWindowAgentView.OnListItemClickListener;
 import com.example.meidemo.view.PopupWindowRentView;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class LocalServiceFragment extends BaseFragment implements
 		OnClickListener, OnListItemClickListener {
 	View view;
 	Activity mActivity;
-	PullToRefreshListView refreshListView;
-	ListView listView;
+//	PullToRefreshListView refreshListView;
+	ZrcListView listView;
 	LocalServiceListAdapter adapter;
 	ObjectMapper objectMapper;
 	ProgressBar progressBar;
@@ -121,10 +122,10 @@ public class LocalServiceFragment extends BaseFragment implements
 		hallroom.setOnClickListener(this);
 		origin.setOnClickListener(this);
 		progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
-		refreshListView = (PullToRefreshListView) view
-				.findViewById(R.id.local_service_pull_refresh_list);
-
-		listView = refreshListView.getRefreshableView();
+//		refreshListView = (PullToRefreshListView) view
+//				.findViewById(R.id.local_service_pull_refresh_list);
+//
+//		listView = refreshListView.getRefreshableView();
 
 		adapter = new LocalServiceListAdapter(mActivity);
 
@@ -186,16 +187,23 @@ public class LocalServiceFragment extends BaseFragment implements
 
 	OnItemClickListener itemClickListener = new OnItemClickListener() {
 
+//		@Override
+//		public void onItemClick(AdapterView<?> parent, View view, int position,
+//				long id) {
+//			/*Toast.makeText(mActivity, "点击了" + position + "item",
+//					Toast.LENGTH_LONG).show();
+//			adapter.getList().get(position - 1).click = true;
+//			adapter.notifyDataSetChanged();*/
+//		}
+
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
+		public void onItemClick(ZrcListView parent, View view, int position,
 				long id) {
+			// TODO Auto-generated method stub
 			Toast.makeText(mActivity, "点击了" + position + "item",
 					Toast.LENGTH_LONG).show();
 			adapter.getList().get(position - 1).click = true;
 			adapter.notifyDataSetChanged();
-			// TextView v = (TextView)view.findViewById(R.id.hr_title);
-			// v.setEnabled(false);
-			// v.setTextColor(mActivity.getResources().getColor(R.color.hr_title_select));
 		}
 	};
 

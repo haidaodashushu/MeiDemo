@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
+import zrc.widget.Footable;
+import zrc.widget.SimpleFooter;
+import zrc.widget.SimpleHeader;
+import zrc.widget.ZrcListView;
+
 import com.example.meidemo.BaseFragment;
 import com.example.meidemo.R;
 import com.example.meidemo.view.GroupHeadView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.example.meidemo.view.adapter.GroupListViewAdapter;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,18 +22,16 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 public class GroupFragment extends BaseFragment {
 	Activity mActivity;
 	View view;
-	PullToRefreshListView mPullToRefreshListView;
-	ListView listView;
+//	PullToRefreshListView mPullToRefreshListView;
+//	ListView listView;
+	
+	ZrcListView listView;
 	LinkedList<String> mItems;
-	ArrayAdapter<String> adapter;
 	Handler handler  = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -39,8 +40,7 @@ public class GroupFragment extends BaseFragment {
 			}else {
 				mItems.addFirst("add last22222");
 			}
-			adapter.notifyDataSetChanged();
-			mPullToRefreshListView.onRefreshComplete();
+//			mPullToRefreshListView.onRefreshComplete();
 			Toast.makeText(getActivity(), "刷新", 2000).show();
 		}
 	};
@@ -65,22 +65,35 @@ public class GroupFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.group_fragment, container, false);
-		GroupHeadView headView = new GroupHeadView(mActivity);
-		return headView;
+		return view;
 	}
 
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
-		mPullToRefreshListView = (PullToRefreshListView) view
-				.findViewById(R.id.pull_refresh_list);
-		listView = mPullToRefreshListView.getRefreshableView();
+//		mPullToRefreshListView = (PullToRefreshListView) view
+//				.findViewById(R.id.pull_refresh_list);
+//		listView = mPullToRefreshListView.getRefreshableView();
+		listView = (ZrcListView)view.findViewById(R.id.pull_refresh_list);
 		mItems = new LinkedList<String>();
 		mItems.addAll(Arrays.asList(mStrings));
-		adapter = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, mItems);
-		mPullToRefreshListView
+		
+		 // 设置下拉刷新的样式（可选，但如果没有Header则无法下拉刷新）
+        SimpleHeader header = new SimpleHeader(mActivity);
+        header.setTextColor(0xff0066aa);
+        header.setCircleColor(0xff33bbee);
+        listView.setHeadable(header);
+
+        // 设置加载更多的样式（可选）
+        SimpleFooter footer = new SimpleFooter(mActivity);
+        footer.setCircleColor(0xff33bbee);
+        listView.setFootable(footer);
+
+        // 设置列表项出现动画（可选）
+        listView.setItemAnimForTopIn(R.anim.topitem_in);
+        listView.setItemAnimForBottomIn(R.anim.bottomitem_in);
+/*		mPullToRefreshListView
 				.setOnRefreshListener(new OnRefreshListener2<ListView>() {
 
 					@Override
@@ -118,9 +131,10 @@ public class GroupFragment extends BaseFragment {
 
 					}
 
-				});
+				});*/
 		GroupHeadView headView = new GroupHeadView(mActivity);
 		listView.addHeaderView(headView);
+		GroupListViewAdapter adapter = new GroupListViewAdapter(mItems, mActivity);
 		listView.setAdapter(adapter);
 		
 	}

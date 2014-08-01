@@ -68,12 +68,12 @@ public class GroupHeadViewAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		Log.i("TGA", position+"");
-		convertView = LayoutInflater.from(context).inflate(R.layout.group_fragment_headview_grid_item, null);
-		convertView.setLayoutParams(params);
-		TextView text = (TextView) convertView
-				.findViewById(R.id.group_headview_grid_item_text);
-		text.setText(list.get(position).getTitle());
+//		Log.i("TGA", position+"");
+//		convertView = LayoutInflater.from(context).inflate(R.layout.group_fragment_headview_grid_item, null);
+//		convertView.setLayoutParams(params);
+//		TextView text = (TextView) convertView
+//				.findViewById(R.id.group_headview_grid_item_text);
+//		text.setText(list.get(position).getTitle());
 		
 //		TextView textView = new TextView(context);
 //		textView.setText(list.get(position).getTitle());

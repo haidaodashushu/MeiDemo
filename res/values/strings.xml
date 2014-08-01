@@ -5,9 +5,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     
-    <!-- 顶部导航 -->
-    <string name="top_title">美食</string>
-    <string name="top_city">广州</string>
     <!-- 底部导航 -->
     <string name="group">团购</string>
     <string name="business">商家</string>
@@ -15,10 +12,6 @@
     <string name="localService">本地服务</string>
     <string name="more">更多</string>
 	
-    <string name="hr_title">大石 大石大信信和 2室1厅 80m²</string>
-    <string name="hr_content">本人专注天文苑,三房靓装修,体育西地铁口物业,约看 </string>
-    <string name="hr_price">1200元 </string>
-    <string name="hr_publish">今天</string>
     
     <string name="h_agent">区域</string>
     <string name="h_rent">租金</string>
@@ -27,4 +20,25 @@
     
     
     <string name="group_headview_guesslike">猜你喜欢</string>
+    <string name="group_headview_item_text">团购</string>
+    
+    
+    
+    
+    
+    
+    <!-- 临时内容 -->
+     <!-- 顶部导航 -->
+    <string name="top_title">美食</string>
+    <string name="top_city">广州</string>
+    <string name="group_listview_title">金沙湾国际大酒店·味道</string>
+    <string name="group_listview_distance">1.2km</string> 
+    <string name="group_listview_content">单人自助晚餐一份仅158元/位</string>
+    <string name="group_listview_newMoney">120</string>
+    <string name="group_listview_oldMoney">198元</string>
+    <string name="group_listview_newMoney_yuan">元</string>
+    <string name="hr_title">大石 大石大信信和 2室1厅 80m²</string>
+    <string name="hr_content">本人专注天文苑,三房靓装修,体育西地铁口物业,约看 </string>
+    <string name="hr_price">1200元 </string>
+    <string name="hr_publish">今天</string>
 </resources>

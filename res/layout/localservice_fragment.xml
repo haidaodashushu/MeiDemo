@@ -103,7 +103,7 @@
                 android:layout_height="2dp"
                 android:layout_gravity="bottom|fill_horizontal"
                 android:background="@drawable/line_bottom_red"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </FrameLayout>
 
         <View
@@ -148,7 +148,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <com.handmark.pulltorefresh.library.PullToRefreshListView
+        <!--
+             <com.handmark.pulltorefresh.library.PullToRefreshListView
             xmlns:ptr="http://schemas.android.com/apk/res-auto"
             android:id="@+id/local_service_pull_refresh_list"
             android:layout_width="fill_parent"
@@ -163,6 +164,15 @@
             android:smoothScrollbar="true"
             ptr:ptrAnimationStyle="flip"
             ptr:ptrMode="both" />
+        -->
+
+        <zrc.widget.ZrcListView
+            android:id="@+id/pull_refresh_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#19000000"
+            android:dividerHeight="300dp" >
+        </zrc.widget.ZrcListView>
 
         <ProgressBar
             android:id="@+id/progressbar"

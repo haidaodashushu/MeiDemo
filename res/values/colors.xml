@@ -10,7 +10,14 @@
     <color name="group_headview_guesslike">#6B6B6B</color>
     <color name="group_headview_grid_unsel">#ffffffff</color>
     <color name="group_headview_grid_sel">#8fffffff</color>
-    <color name="group_headview_grid_item_text">#323232</color>
+    <color name="group_headview_item_text">#323232</color>
+    
+    <color name="group_listview_title">#ff303030</color>
+    <color name="group_listview_distance">#ff999999</color>
+    <color name="group_listview_content">#ff9B9B9B</color>
+    <color name="group_listview_newMoney">#ff359BC1</color>
+    <color name="group_listview_newMoney_yuan">#ff959595</color>
+    <color name="group_listview_oldMoney">#AAAAAA</color>
     
     <color name="hr_title_unselect">#ff545454</color>
     <color name="hr_title_select">#ffACB1BC</color>
@@ -26,4 +33,5 @@
     <color name="h_popwindow_agent_left_text_unselect">#ffE0E0E0</color>
     <color name="h_popwindow_agent_left_text_select">#ffF0F0F0</color>
     <color name="h_popwindow_agent_right_text_unselect">#ffF8F8F8</color>
+    
 </resources>
