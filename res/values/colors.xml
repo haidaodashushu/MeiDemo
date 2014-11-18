@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <!-- 背景 -->
     <color name="background">#ffF0F0F0</color>
     <!-- 顶部导航 -->
     <color name="top_menu_bg">#FF50C1E9</color>
     <color name="top_title">#ffffffff</color>
-    
     <color name="group_headview_guesslike">#6B6B6B</color>
     <color name="group_headview_grid_unsel">#ffffffff</color>
     <color name="group_headview_grid_sel">#8fffffff</color>
     <color name="group_headview_item_text">#323232</color>
-    
     <color name="group_listview_title">#ff303030</color>
     <color name="group_listview_distance">#ff999999</color>
     <color name="group_listview_content">#ff9B9B9B</color>
     <color name="group_listview_newMoney">#ff359BC1</color>
     <color name="group_listview_newMoney_yuan">#ff959595</color>
     <color name="group_listview_oldMoney">#AAAAAA</color>
-    
     <color name="hr_title_unselect">#ff545454</color>
     <color name="hr_title_select">#ffACB1BC</color>
     <color name="hr_price">#FFFF8B2E</color>
     <color name="hr_publish">#ffACB1BC</color>
     <color name="h_line">#ffACB1BC</color>
-    
     <color name="h_text_select">#FFFF8B2E</color>
     <color name="h_text_unselect">#ff545454</color>
     <color name="h_pop_bg">#3f000000</color>
-   
     <color name="h_popwindow_agent_left_item">#ffC8C8C8</color>
     <color name="h_popwindow_agent_left_text_unselect">#ffE0E0E0</color>
     <color name="h_popwindow_agent_left_text_select">#ffF0F0F0</color>
     <color name="h_popwindow_agent_right_text_unselect">#ffF8F8F8</color>
-    
+    <color name="topblue">#4fc1e9</color>
+    <color name="white">#ffffff</color>
+    <color name="graytextcolor">#666666</color>
+	
+    <color name="register_step_enable">#3DB0DA</color>
+    <color name="register_step_unable">#666666</color>
 </resources>

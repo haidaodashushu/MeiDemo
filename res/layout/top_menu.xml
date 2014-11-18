@@ -64,6 +64,7 @@
                 android:gravity="center"
                 android:singleLine="true"
                 android:text="@string/top_city"
+                android:background="@null"
                 android:textColor="@color/top_title"
                 android:textSize="@dimen/top_city_text"
                  />
@@ -106,4 +107,8 @@
             android:background="@drawable/btn_topbar_selector"/>
         
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ff3FB1D6" />
 </LinearLayout>

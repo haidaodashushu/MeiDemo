@@ -2,8 +2,11 @@ package com.example.meidemo.localService;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+
+import net.tsz.afinal.http.AjaxParams;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -11,11 +14,11 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import zrc.widget.SimpleFooter;
+import zrc.widget.SimpleHeader;
 import zrc.widget.ZrcListView;
 import zrc.widget.ZrcListView.OnItemClickListener;
-
 import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,45 +26,37 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.WindowManager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
 import android.widget.ProgressBar;
-import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.meidemo.BaseFragment;
 import com.example.meidemo.R;
-import com.example.meidemo.Constants.ConstansUrls;
+import com.example.meidemo.Popwindow.MyPopupWindow;
+import com.example.meidemo.data.GlobalData;
 import com.example.meidemo.net.HttpConnection;
 import com.example.meidemo.net.HttpConnection.HttpConnectionListener;
 import com.example.meidemo.view.PopupWindowAgentView;
-import com.example.meidemo.view.PopupWindowAgentView.OnListItemClickListener;
 import com.example.meidemo.view.PopupWindowRentView;
+import com.example.meidemo.view.TopClassifyView;
+import com.example.meidemo.view.TopClassifyView.OnItemClick;
+import com.example.meidemo.view.interfaces.OnListItemClickListener;
 
-public class LocalServiceFragment extends BaseFragment implements
-		OnClickListener, OnListItemClickListener {
+public class LocalServiceFragment extends BaseFragment implements OnItemClick,
+		OnListItemClickListener {
 	View view;
 	Activity mActivity;
-//	PullToRefreshListView refreshListView;
+	// PullToRefreshListView refreshListView;
 	ZrcListView listView;
 	LocalServiceListAdapter adapter;
 	ObjectMapper objectMapper;
 	ProgressBar progressBar;
-	View line;
-	TableRow tableRow;
+	TopClassifyView tcView;
 	/** 顶部选择栏 */
-	FrameLayout agent, rent, hallroom, origin;
+	// FrameLayout agent, rent, hallroom, origin;
 	/** 弹出框 */
 	PopupWindow pop;
 	private WeakHandler handler;
@@ -87,6 +82,44 @@ public class LocalServiceFragment extends BaseFragment implements
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		tcView = (TopClassifyView) view.findViewById(R.id.classify);
+		try {
+			tcView.addAllView(new int[] { 0, 1, 2, 3 }, new String[] { "区域","租金", "厅室", "来源" }, new int[] { 0, 0, 0, 0 }, new int[] {0, 0, 0, 0 }, 
+					new int[] { R.drawable.ic_global_arrow_green_fold_normal,
+							R.drawable.ic_global_arrow_green_fold_normal,
+							R.drawable.ic_global_arrow_green_fold_normal,
+							R.drawable.ic_global_arrow_green_fold_normal },
+					new int[] {
+							R.drawable.ic_global_arrow_green_unfold_normal,
+							R.drawable.ic_global_arrow_green_unfold_normal,
+							R.drawable.ic_global_arrow_green_unfold_normal,
+							R.drawable.ic_global_arrow_green_unfold_normal });
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		tcView.setOnItemClick(this);
+		progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
+		listView = (ZrcListView) view.findViewById(R.id.pull_refresh_list);
+		// 设置下拉刷新的样式（可选，但如果没有Header则无法下拉刷新）
+		SimpleHeader header = new SimpleHeader(mActivity);
+		header.setTextColor(0xff0066aa);
+		header.setCircleColor(0xff33bbee);
+		listView.setHeadable(header);
+
+		// 设置加载更多的样式（可选）
+		SimpleFooter footer = new SimpleFooter(mActivity);
+		footer.setCircleColor(0xff33bbee);
+		listView.setFootable(footer);
+		adapter = new LocalServiceListAdapter(mActivity);
+
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(itemClickListener);
+		handler = new WeakHandler(this);
+		// task.start();
+		requestData();
+		
+		pop = new MyPopupWindow(mActivity, tcView).getPop();
 	}
 
 	@Override
@@ -110,30 +143,7 @@ public class LocalServiceFragment extends BaseFragment implements
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		pop = createPopupWindow();
-		tableRow = (TableRow) view.findViewById(R.id.tablerow);
-		line = (View) view.findViewById(R.id.line);
-		agent = (FrameLayout) view.findViewById(R.id.agent);
-		rent = (FrameLayout) view.findViewById(R.id.rent);
-		hallroom = (FrameLayout) view.findViewById(R.id.hallroom);
-		origin = (FrameLayout) view.findViewById(R.id.origin);
-		agent.setOnClickListener(this);
-		rent.setOnClickListener(this);
-		hallroom.setOnClickListener(this);
-		origin.setOnClickListener(this);
-		progressBar = (ProgressBar) view.findViewById(R.id.progressbar);
-//		refreshListView = (PullToRefreshListView) view
-//				.findViewById(R.id.local_service_pull_refresh_list);
-//
-//		listView = refreshListView.getRefreshableView();
-
-		adapter = new LocalServiceListAdapter(mActivity);
-
-		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(itemClickListener);
-		handler = new WeakHandler(this);
-		// task.start();
-		requestData();
+		
 
 	}
 
@@ -186,16 +196,6 @@ public class LocalServiceFragment extends BaseFragment implements
 	}
 
 	OnItemClickListener itemClickListener = new OnItemClickListener() {
-
-//		@Override
-//		public void onItemClick(AdapterView<?> parent, View view, int position,
-//				long id) {
-//			/*Toast.makeText(mActivity, "点击了" + position + "item",
-//					Toast.LENGTH_LONG).show();
-//			adapter.getList().get(position - 1).click = true;
-//			adapter.notifyDataSetChanged();*/
-//		}
-
 		@Override
 		public void onItemClick(ZrcListView parent, View view, int position,
 				long id) {
@@ -215,7 +215,7 @@ public class LocalServiceFragment extends BaseFragment implements
 		data.add(new BasicNameValuePair("pb", "0"));
 		data.add(new BasicNameValuePair("pg", "1"));
 		data.add(new BasicNameValuePair("ps", "20"));
-		HttpConnection.getInstance().start(ConstansUrls.House_Rent, mActivity,
+		HttpConnection.getInstance().start(GlobalData.ip+GlobalData.House_Rent, mActivity,
 				data, new HttpConnectionListener() {
 
 					@Override
@@ -244,159 +244,28 @@ public class LocalServiceFragment extends BaseFragment implements
 				});
 	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.agent:
-			setFrameLayout(0);
-			pop.setContentView(new PopupWindowAgentView(mActivity, pop, this));
-			pop.showAsDropDown(v, 0, 0);
+	
 
-			break;
-		case R.id.rent:
-			setFrameLayout(1);
-			pop.setContentView(new PopupWindowRentView(mActivity, pop));
-			pop.showAsDropDown(v, 0, 0);
+	
 
-			break;
-		case R.id.hallroom:
-			setFrameLayout(2);
-			pop.showAsDropDown(v, 0, 0);
-			break;
-		case R.id.origin:
-			setFrameLayout(3);
-			pop.showAsDropDown(v, 0, 0);
-			break;
-
-		default:
-			break;
-		}
-	}
-
-	/**
-	 * 设置顶部选择栏的点击效果
-	 * 
-	 * @param index
-	 *            当前点击的选择框的下标
-	 */
-	private void setFrameLayout(int index) {
-		int count = tableRow.getChildCount();
-		for (int i = 0; i < count; i += 2) {
-			View temp = tableRow.getChildAt(i);
-			TextView temptext = null;
-			View tempView = null;
-			if (temp instanceof FrameLayout) {
-				FrameLayout layout = (FrameLayout) temp;
-				if (layout.getChildCount() > 1) {
-					temptext = (TextView) layout.getChildAt(0);
-					tempView = (View) layout.getChildAt(1);
-				}
-			}
-			if (temptext == null || tempView == null) {
-				continue;
-			} else {
-				if (i == (index * 2)) {
-					// Drawable daDrawable =
-					// mActivity.getResources().getDrawable(R.drawable.ic_global_arrow_green_fold_normal);
-					// if (daDrawable==null) {
-					// Log.i("tag", "null");
-					// }else {
-					// Log.i("tag", "notnull");
-					// }
-					temptext.setTextColor(mActivity.getResources().getColor(
-							R.color.h_text_select));
-					// temptext.setCompoundDrawablesWithIntrinsicBounds(left,
-					// top, right, bottom)
-					temptext.setCompoundDrawablesWithIntrinsicBounds(
-							null,
-							null,
-							mActivity
-									.getResources()
-									.getDrawable(
-											R.drawable.ic_global_arrow_green_unfold_normal),
-							null);
-					tempView.setVisibility(View.VISIBLE);
-				} else {
-					temptext.setTextColor(mActivity.getResources().getColor(
-							R.color.h_text_unselect));
-					temptext.setCompoundDrawablesWithIntrinsicBounds(
-							null,
-							null,
-							mActivity
-									.getResources()
-									.getDrawable(
-											R.drawable.ic_global_arrow_green_fold_normal),
-							null);
-					tempView.setVisibility(View.GONE);
-				}
-
-			}
-		}
-	}
-
-	public MotionEvent event1;
-
-	private PopupWindow createPopupWindow() {
-		PopupWindow pop = new PopupWindow(mActivity);
-		pop.setWidth(LayoutParams.MATCH_PARENT);
-		pop.setHeight(LayoutParams.MATCH_PARENT);
-		// PopupWindow pop = new
-		// PopupWindow(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
-
-		ColorDrawable dw = new ColorDrawable(0x80000000);
-		pop.setBackgroundDrawable(dw);
-		pop.setFocusable(true);
-		// pop.setOutsideTouchable(true);
-		pop.setTouchInterceptor(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				Log.i("pop", "dianjiPOP");
-				event1 = event;
-				return false;
-			}
-		});
-		pop.setOnDismissListener(new OnDismissListener() {
-
-			@Override
-			public void onDismiss() {
-				// 在这里借用popwindow的点击事件来判断点击是否落在一下4个按钮上，触发他们的点击
-				View[] view = new View[] { agent, rent, hallroom, origin };
-				int[] location = new int[2];
-				for (int i = 0; i < view.length; i++) {
-					view[i].getLocationOnScreen(location);
-					if (event1.getRawX() < location[0] + view[i].getWidth()
-							&& event1.getRawX() > location[0]
-							&& event1.getRawY() < location[1]
-									+ view[i].getHeight()
-							&& event1.getRawY() > location[1]) {
-						view[i].performClick();
-					}
-				}
-			}
-		});
-
-		return pop;
-	}
-
-	public void updateAgent(List<NameValuePair> data) {
-
+	public void updateAgent(HashMap<String, Object> data) {
+		//改用finalhttp
 		try {
-			HttpConnection.getInstance().start(ConstansUrls.House_Rent,
-					mActivity, data, new HttpConnectionListener() {
-
-						@Override
-						public String onSuccess(String message) {
-							// TODO Auto-generated method stub
-							return null;
-						}
-
-						@Override
-						public String onFailure(String message) {
-							// TODO Auto-generated method stub
-							return null;
-						}
-					});
+//			HttpConnection.getInstance().start(GlobalData.ip+GlobalData.House_Rent,
+//					mActivity, data, new HttpConnectionListener() {
+//
+//						@Override
+//						public String onSuccess(String message) {
+//							// TODO Auto-generated method stub
+//							return null;
+//						}
+//
+//						@Override
+//						public String onFailure(String message) {
+//							// TODO Auto-generated method stub
+//							return null;
+//						}
+//					});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -405,8 +274,41 @@ public class LocalServiceFragment extends BaseFragment implements
 	}
 
 	@Override
-	public void itemClickListener(List<NameValuePair> data) {
+	public void itemClickListener(HashMap<String, Object> data) {
 		updateAgent(data);
+	}
+
+	@Override
+	public void onItemClick(View v) {
+		Log.i("LocalService", v.getId()+"::");
+		switch (v.getId()) {
+		case 0:
+			tcView.setFrameLayout(0);
+			pop.setContentView(new PopupWindowAgentView(mActivity, pop, this));
+			pop.showAsDropDown(v, 0, 0);
+
+			break;
+		case 1:
+			tcView.setFrameLayout(1);
+//			((ViewGroup)pop.getContentView()).removeAllViews();
+//			((ViewGroup)pop.getContentView()).addView(new PopupWindowRentView(mActivity, pop));
+			
+			pop.setContentView(new PopupWindowRentView(mActivity, pop));
+			pop.showAsDropDown(tcView, 0, 0);
+
+			break;
+		case 2:
+			tcView.setFrameLayout(2);
+			pop.showAsDropDown(v, 0, 0);
+			break;
+		case 3:
+			tcView.setFrameLayout(3);
+			pop.showAsDropDown(v, 0, 0);
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

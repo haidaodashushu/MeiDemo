@@ -2,6 +2,22 @@ package com.example.meidemo.CommonUtils;
 
 public class StringUtils {
 	
+	/**
+	 * 去除字符串的前后括号
+	 * @param str
+	 * @return
+	 */
+	public static String removeParentheses(String str){
+		int temp = -1;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i)=='(') {
+				temp = i;
+				break;
+			}
+		}
+		str = str.substring(temp+1, (str.lastIndexOf(')')==-1)?str.length():str.lastIndexOf(')'));
+		return str;
+	}
 	public static String fromUnicode(char[] in, int off, int len, char[] convtBuf) {
 		if (convtBuf.length < len) {
 			int newLen = len * 2;

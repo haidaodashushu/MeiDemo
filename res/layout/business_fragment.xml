@@ -2,11 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical" >
-    
-    <TextView 
+
+    <com.example.meidemo.view.TopMenuView
+        android:id="@+id/topmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.example.meidemo.view.TopMenuView>
+
+    <com.example.meidemo.view.TopClassifyView
+        android:id="@+id/classify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </com.example.meidemo.view.TopClassifyView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#ff3FB1D6" />
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/category_location_bg"
+        android:drawableRight="@drawable/checked"
+        android:padding="5dp"
+        android:text="梅州梅县，沿江金案大道-沿江半岛大道"
+        android:textSize="12sp" />
+
+    <zrc.widget.ZrcListView
+        android:id="@+id/pull_refresh_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="商户"/>
+        android:cacheColorHint="#00000000"
+        android:divider="#19000000"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" >
+    </zrc.widget.ZrcListView>
 
 </LinearLayout>

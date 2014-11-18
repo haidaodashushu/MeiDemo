@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp"
+    android:orientation="vertical"
+    android:gravity="center" >
+    
+    <ImageView 
+        android:id="@+id/videoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher"/>
+    
+    <TextView 
+        android:id="@+id/videoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="left|center_vertical"
+        android:text="大宅男"
+        android:textColor="#000000"
+        android:textSize="14sp"/>
+    <TextView 
+        android:id="@+id/videoScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="left|center_vertical"
+        android:text="4.2分"
+        android:textColor="#DE2801"
+        android:textSize="14sp"/>
+
+</LinearLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical" >
+
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:background="@color/topblue"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/backnav" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+	
+   <LinearLayout 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:background="@drawable/login_edit_bg"
+       android:layout_margin="10dp">
+       <com.example.meidemo.view.ClearTextEditView 
+           android:id="@+id/user"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:padding="10dp"
+           android:background="@null"
+           android:textSize="18sp"
+           android:textColorHint="#BBBBBB"
+           android:hint="手机/邮箱/用户名">
+       </com.example.meidemo.view.ClearTextEditView>
+       <View 
+           android:layout_width="match_parent"
+           android:layout_height="0.5dp"
+           android:background="#CCCCCC"/>
+        <com.example.meidemo.view.ClearTextEditView 
+           android:id="@+id/password"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:padding="10dp"
+           android:textSize="18sp"
+           android:textColorHint="#BBBBBB"
+           android:hint="密码">
+       </com.example.meidemo.view.ClearTextEditView>
+   </LinearLayout>
+   
+   <Button 
+       android:id="@+id/login_btn"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginBottom="10dp"
+       android:textSize="20sp"
+       android:padding="10dp"
+       android:background="@drawable/btn_login_selector"
+       android:textColor="#FEFEFF"
+       android:text="登录"/>
+   
+   <LinearLayout 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="10dp"
+       android:layout_marginRight="10dp"
+       android:layout_marginBottom="10dp"
+       android:orientation="horizontal">
+       <TextView 
+           android:id="@+id/register_tv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="免费注册"
+           android:textColor="#3FB0DA"
+           android:paddingBottom="5dp"
+           android:paddingRight="5dp"/>
+       <TextView 
+           android:id="@+id/no_username_login_tv"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:layout_gravity="right"
+           android:gravity="right"
+           android:text="无账号快捷登录"
+           android:textColor="#3FB0DA"
+           android:paddingBottom="5dp"/>
+   </LinearLayout>
+</LinearLayout>

@@ -2,46 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background" >
+    android:background="@color/background"
+    android:orientation="vertical" >
 
-    <include layout="@layout/top_menu" />
+    <!-- <include layout="@layout/top_menu" /> -->
 
-    <!-- <TextView
-        android:id="@+id/te"
+    <com.example.meidemo.view.TopMenuView
+        android:id="@+id/topmenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="woshiasdfasdfasdf" /> -->
-        
-      <View 
-          android:layout_width="match_parent"
-          android:layout_height="2dp"
-          android:background="#ff3FB1D6"/>
-<!--     <com.handmark.pulltorefresh.library.PullToRefreshListView
-	    xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/pull_refresh_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:cacheColorHint="#00000000"
-        android:divider="#19000000"
-        android:dividerHeight="300dp"
-        android:fadingEdge="none"
-        android:fastScrollEnabled="false"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"
-        android:smoothScrollbar="true"
-        ptr:ptrAnimationStyle="flip"
-        ptr:ptrMode="both"
-        /> -->
-    
-    <zrc.widget.ZrcListView
-        android:id="@+id/pull_refresh_list"
+        android:layout_height="wrap_content" >
+    </com.example.meidemo.view.TopMenuView>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="#00000000"
-        android:listSelector="@android:color/transparent"
-        android:divider="#19000000"
-        android:dividerHeight="10dp" >
-    </zrc.widget.ZrcListView>
+        android:layout_height="match_parent" >
+
+        <zrc.widget.ZrcListView
+            android:id="@+id/pull_refresh_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+             android:listSelector="@android:color/transparent"
+            android:divider="#19000000"
+            android:dividerHeight="0dp"
+            >
+        </zrc.widget.ZrcListView>
+
+        <include layout="@layout/progressbar" />
+    </FrameLayout>
 
 </LinearLayout>

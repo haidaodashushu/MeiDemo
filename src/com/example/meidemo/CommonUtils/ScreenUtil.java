@@ -23,4 +23,7 @@ public class ScreenUtil {
 	public static int getDensityDpi(Context context){
 		return getDisplayMetrics(context).densityDpi;
 	}
+	public static float getDensity(Context context){
+		return getDisplayMetrics(context).density;
+	}
 }

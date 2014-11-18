@@ -2,22 +2,15 @@ package com.example.meidemo.view.adapter;
 
 import java.util.List;
 
-import com.example.meidemo.R;
-
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.example.meidemo.R;
 
 public class PopupWindowAgentRightAdapter extends BaseAdapter{
 	List<String> rightList ; 

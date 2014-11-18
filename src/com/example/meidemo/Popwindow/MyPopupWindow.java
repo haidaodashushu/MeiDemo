@@ -3,56 +3,74 @@ package com.example.meidemo.Popwindow;
 import com.example.meidemo.R;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnTouchListener;
 import android.view.WindowManager.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class MyPopupWindow extends PopupWindow{
+public class MyPopupWindow{
 	Context context;
-	MyPopupWindow pop;
-	View contentView;
-	public MyPopupWindow(Context context,View contentView) {
+	PopupWindow pop;
+	ViewGroup anchor;
+	public MotionEvent event1;
+	public MyPopupWindow(Context context,ViewGroup anchor) {
 		this.context = context;
-		pop = (MyPopupWindow) new PopupWindow(context);
+		this.anchor  = anchor;
+		pop = createPopupWindow();
+	}
+	public PopupWindow getPop() {
+		return pop;
+	}
+	private PopupWindow createPopupWindow() {
+		PopupWindow pop = new PopupWindow(context);
 		pop.setWidth(LayoutParams.MATCH_PARENT);
 		pop.setHeight(LayoutParams.MATCH_PARENT);
-//		if (contentView==null) {
-//			View view = LayoutInflater.from(context).inflate(R.layout.hr_popwindow_rent, null);
-//			pop.setContentView(view);
-//		}else {
-//			pop.setContentView(contentView);
-//		}
-//		pop.setContentView(contentView);
+
+		ColorDrawable dw = new ColorDrawable(0x80000000);
+		pop.setBackgroundDrawable(dw);
+		pop.setFocusable(true);
+		pop.setTouchInterceptor(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				event1 = event;
+				return false;
+			}
+		});
+		pop.setOnDismissListener(new OnDismissListener() {
+
+			@Override
+			public void onDismiss() {
+				// 在这里借用popwindow的点击事件来判断点击是否落在一下4个按钮上，触发他们的点击
+				if (event1==null) {
+					return;
+				}
+				int[] location = new int[2];
+				ViewGroup group = (ViewGroup) anchor.getChildAt(0);
+				for (int i = 0; i < group.getChildCount(); i++) {
+					group.getChildAt(i).getLocationOnScreen(location);
+					if (event1.getRawX() < location[0] +group.getChildAt(i).getWidth()
+							&& event1.getRawX() > location[0]
+							&& event1.getRawY() < location[1]
+									+ group.getChildAt(i).getHeight()
+							&& event1.getRawY() > location[1]) {
+						group.getChildAt(i).performClick();
+						break;
+					}
+				}
+				event1 = null;
+			}
+		});
+
+		return pop;
 	}
-	public void setContentView(View contentView) {
-		this.contentView = contentView;
-		if (contentView==null) {
-			return;
-		}
-		pop.setContentView(contentView);
-	}
-	@Override
-	public void showAsDropDown(View anchor, int xoff, int yoff) {
-		// TODO Auto-generated method stub
-		super.showAsDropDown(anchor, xoff, yoff);
-		
-	}
-//	public void showPopWindow(View v,int xoff,int yoff){
-//		if (contentView!=null) {
-//			pop.setContentView(contentView);
-//		}
-//		pop.showAsDropDown(v, 0, 0);
-//		String[] str = new String[]{"王一","王一","王一"};
-//		ViewGroup tempGroup = (ViewGroup) pop.getContentView();
-//		ListView listView = (ListView) tempGroup.getChildAt(0);
-//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, android.R.id.text1, str);
-//		listView.setAdapter(adapter);
-//		listView.startAnimation(AnimationUtils.loadAnimation(context, R.anim.in_toptobottom));
-//	}
-//	
 }

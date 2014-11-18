@@ -24,5 +24,7 @@
     <style name="popWindowFade">
         <item name="android:windowEnterAnimation">@anim/in_toptobottom</item>
     </style>
-
+    <style name="textErrorColor">
+        <item name="android:textColorPrimaryInverse">#000000</item> 
+    </style>
 </resources>

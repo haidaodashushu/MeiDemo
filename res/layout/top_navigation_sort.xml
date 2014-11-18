@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/h_pop_bg"
+    android:gravity="top|right" >
+    
+    <ListView 
+        android:id="@+id/h_pop_list"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="#ffffffff"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:divider="@color/h_line"
+        android:dividerHeight="1dp"
+        ></ListView>
+
+</LinearLayout>

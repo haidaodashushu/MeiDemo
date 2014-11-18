@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff" >
+
+        <TextView
+            android:id="@+id/movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:padding="5dp"
+            android:text="开心国际影城"
+            android:textColor="#ff303030"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tuanImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/movie"
+            android:layout_alignBottom="@+id/movie"
+            android:layout_toRightOf="@+id/movie"
+            android:background="@drawable/tuan_icon"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="团"
+            android:textColor="#ff303030"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/movie"
+            android:padding="5dp"
+            android:layout_below="@+id/movie"
+            android:rating="0"
+            android:stepSize="0.1" />
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ratingBar1"
+            android:layout_toRightOf="@+id/ratingBar1"
+            android:layout_below="@+id/movie"
+            android:padding="5dp"
+            android:text="3.7分"
+            android:textColor="#ff888888"
+            android:textSize="12sp" />
+        
+        <TextView
+            android:id="@+id/opinionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/score"
+            android:layout_toRightOf="@+id/score"
+            android:layout_below="@+id/movie"
+            android:padding="5dp"
+            android:text="10人评价"
+            android:textColor="#ff888888"
+            android:textSize="12sp" />
+        
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ratingBar1"
+            android:padding="5dp"
+            android:text="￥8.8元起"
+            android:textColor="#ff2A99C4"
+            android:textSize="16sp" />
+        
+        
+       <RelativeLayout 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_alignParentRight="true"
+           android:paddingBottom="5dp"
+           android:layout_alignBottom="@+id/money">
+            <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="3.5km"
+            android:textColor="#ff888888"
+            android:textSize="12sp" />
+        
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/distance"
+            android:layout_alignTop="@id/distance"
+            android:layout_alignBottom="@id/distance"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/category_item_l"
+            />
+        <TextView
+            android:id="@+id/zone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/view"
+            android:layout_alignTop="@id/view"
+            android:layout_alignBottom="@id/view"
+            android:text="江北"
+            android:textColor="#ff888888"
+            android:textSize="12sp" />
+       </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

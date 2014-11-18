@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#FFFFFF" 
+        android:paddingTop="5dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:gravity="center_vertical" >
@@ -17,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF" >
+            >
 
             <ImageView
                 android:id="@+id/group"
@@ -43,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF" >
+             >
 
             <ImageView
                 android:id="@+id/business"
@@ -68,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF" >
+             >
 
             <ImageView
                 android:id="@+id/myInfo"
@@ -94,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF" >
+             >
 
             <ImageView
                 android:id="@+id/localService"
@@ -111,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/localService"
                 android:layout_centerHorizontal="true"
-                android:text="@string/localService"
+                android:text="本地服务"
                 android:textSize="12sp" >
             </TextView>
         </RelativeLayout>
@@ -120,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFFFFF" >
+            >
 
             <ImageView
                 android:id="@+id/more"

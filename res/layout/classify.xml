@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toprow"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+     >
+
+   <!--  <FrameLayout
+        android:id="@+id/agent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_global_arrow_green_fold_normal"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="@string/h_agent"
+            android:textSize="@dimen/h_title" />
+
+        <View
+            android:id="@+id/agent_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|fill_horizontal"
+            android:background="@drawable/line_bottom_red"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@drawable/line" />
+
+    <FrameLayout
+        android:id="@+id/rent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_global_arrow_green_fold_normal"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="@string/h_rent"
+            android:textSize="@dimen/h_title" />
+
+        <View
+            android:id="@+id/rent_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|fill_horizontal"
+            android:background="@drawable/line_bottom_red"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/line" />
+
+    <FrameLayout
+        android:id="@+id/hallroom"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_global_arrow_green_fold_normal"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="@string/h_hallroom"
+            android:textSize="@dimen/h_title" />
+
+        <View
+            android:id="@+id/hallroom_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|fill_horizontal"
+            android:background="@drawable/line_bottom_red"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/line" />
+
+    <FrameLayout
+        android:id="@+id/origin"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_global_arrow_green_fold_normal"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="8dp"
+            android:text="@string/h_origin"
+            android:textSize="@dimen/h_title" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom|fill_horizontal"
+            android:background="@drawable/line_bottom_red"
+            android:visibility="gone" />
+    </FrameLayout> -->
+
+</LinearLayout>

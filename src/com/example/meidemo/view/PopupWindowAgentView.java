@@ -2,6 +2,7 @@ package com.example.meidemo.view;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -23,6 +24,7 @@ import com.example.meidemo.CommonUtils.ScreenUtil;
 import com.example.meidemo.view.adapter.PopupWindowAgentAdapter;
 import com.example.meidemo.view.adapter.PopupWindowAgentAdapter.Holder;
 import com.example.meidemo.view.adapter.PopupWindowAgentRightAdapter;
+import com.example.meidemo.view.interfaces.OnListItemClickListener;
 
 public class PopupWindowAgentView extends LinearLayout {
 	PopupWindow pop;
@@ -128,9 +130,6 @@ public class PopupWindowAgentView extends LinearLayout {
 					+ leftAdapter.current);
 		}
 	};
-	public interface OnListItemClickListener{
-		public void itemClickListener(List<NameValuePair> data);
-	}
 	
 	public OnListItemClickListener getItemClickListener() {
 		return itemClickListener;
@@ -147,12 +146,19 @@ public class PopupWindowAgentView extends LinearLayout {
 				long id) {
 				pop.dismiss();
 				if (itemClickListener!=null) {
-					List<NameValuePair> data = new ArrayList<NameValuePair>();
-					data.add(new BasicNameValuePair("ty", "0"));
-					data.add(new BasicNameValuePair("pb", "0"));
-					data.add(new BasicNameValuePair("pg", "1"));
-					data.add(new BasicNameValuePair("ps", "20"));
-					data.add(new BasicNameValuePair("zn", "梅江"));
+//					List<NameValuePair> data = new ArrayList<NameValuePair>();
+//					data.add(new BasicNameValuePair("ty", "0"));
+//					data.add(new BasicNameValuePair("pb", "0"));
+//					data.add(new BasicNameValuePair("pg", "1"));
+//					data.add(new BasicNameValuePair("ps", "20"));
+//					data.add(new BasicNameValuePair("zn", "梅江"));
+					
+					HashMap<String, Object> data = new HashMap<String, Object>();
+					data.put("ty", "0");
+					data.put("pb", "0");
+					data.put("pg", "1");
+					data.put("ps", "20");
+					data.put("zn", "梅江");
 					itemClickListener.itemClickListener(data);
 						
 				}
